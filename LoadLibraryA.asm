@@ -24,3 +24,9 @@
   jmp .search_loop_2
 .function_found_2:
 
+.function_found_2
+  movzx r12d, word ptr [r9 + r11 * 2]
+  mov eax, dword ptr [r10 + r12 * 4]
+  add rax, r15
+
+  mov r13, rax ;r13 = LoadLibraryA
