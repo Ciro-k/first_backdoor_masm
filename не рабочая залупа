@@ -8,25 +8,31 @@ start PROC
   mov rsi, [rsi]
   mov rsi, [rsi]
   mov r15, [rsi + 020h]
-;r15 = CreateProcess addr
+;PEB, Ldr, библиотеки, прыжки, kernel32.dll
 
   mov eax, dword ptr [r15 + 03C]
   add rax, r15
+  ;PE заголовок
 
   mov edx, dword ptr [rax + 088h]
   add rdx, r15
+  ;оглавление
 
   mov r8d, dword ptr [rdx + 024h]
   add rdx, r15
+  ;текстовые имена
 
   mov r9d, dword ptr [rdx + 020h]
   add r9, r15
+  ;ординалы
 
   mov r10d, dword ptr [rdx + 01C]
   add r10, r15
+  ;адреса
 
   mov r12, 0 ; CreatePr
-  mov r13, 0 ; ocess/0/0
+  mov r13, 0 ; ocessA\0\0
+;в hex
 
   xor r11, r11
 
