@@ -29,4 +29,25 @@
   mov eax, dword ptr [r10 + r12 * 4]
   add rax, r15
 
-  mov r13, rax ;r13 = LoadLibraryA
+  mov r13, rax
+
+  mov rax, 0, ;ll\0\0\0\0\0\0
+  push rax
+  mov rax, 0 ;ws2_32.d
+  push rax
+
+  mov rcx, rsp
+  sub rsp, 32
+  call r13
+
+  add rsp, 32
+  add rsp, 16
+
+  mov r15, rax
+;exit
+  sub rsp, 32
+  mov ecx, 0
+  call ExitProcess
+start ENDP
+END
+
